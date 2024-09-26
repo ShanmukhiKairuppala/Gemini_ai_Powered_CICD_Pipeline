@@ -1,23 +1,43 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# React Frontend (copied from frontend/.gitignore)
+frontend/node_modules/
+frontend/.pnp/
+frontend/.pnp.js
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Frontend testing
+frontend/coverage/
 
-# testing
-/coverage
+# Production build folder for React
+frontend/build/
 
-# production
-/build
+# Miscellaneous frontend files
+frontend/.DS_Store
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
 
-# misc
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Backend Node.js
+backend/node_modules/
+backend/.env
+
+# Logs for backend
+backend/logs/
+backend/*.log
+
+# Ignore OS-specific files
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Editor-specific
+.vscode/
+.idea/
+
+# Other system files
+Thumbs.db
+
+
+.env
+node_modules/
