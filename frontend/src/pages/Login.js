@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/auth/login', { email, password });
-            localStorage.setItem('token', response.data.token);
+            const { token, username, userId } = response.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('username', username);
+            localStorage.setItem('userId', userId);
             navigate('/');
         } catch (error) {
-            console.error('Error logging in:', error);
+            setError(error.response.data.error);
         }
     };
 
     return (
-        <div>
+        <div className='login'>
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <div>
@@ -41,6 +46,7 @@ const Login = () => {
                     />
                 </div>
                 <button type="submit">Login</button>
+                {error && <p>{error}</p>}
             </form>
         </div>
     );

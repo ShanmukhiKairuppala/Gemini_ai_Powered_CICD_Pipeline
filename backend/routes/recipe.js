@@ -24,6 +24,16 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Get recipe by ID
+router.get('/:id', async (req, res) => {
+    try {
+        const recipe = await Recipe.findById(req.params.id).populate('user', 'username');
+        res.json(recipe);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to get recipe' });
+    }
+});
+
 // Like a recipe
 router.put('/like/:id', async (req, res) => {
     try {

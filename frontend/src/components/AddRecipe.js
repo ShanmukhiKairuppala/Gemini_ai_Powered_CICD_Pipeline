@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import './addRecipe.css';
 const AddRecipe = () => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
@@ -24,7 +24,7 @@ const AddRecipe = () => {
     };
 
     return (
-        <div>
+        <div class = 'addRecipe'> 
             <h2>Add Recipe</h2>
             <form onSubmit={handleAddRecipe}>
                 <div>
@@ -36,7 +36,7 @@ const AddRecipe = () => {
                         required
                     />
                 </div>
-                <div>
+                <div class = 'recdetails'>
                     <label>Ingredients:</label>
                     <textarea
                         value={ingredients}
@@ -44,7 +44,7 @@ const AddRecipe = () => {
                         required
                     />
                 </div>
-                <div>
+                <div class = 'recdetails'>
                     <label>Process:</label>
                     <textarea
                         value={process}
